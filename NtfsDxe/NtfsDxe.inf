@@ -1,0 +1,71 @@
+## @file
+#
+#******************************************************************************
+#* Copyright (c) 2012 - 2013, Insyde Software Corporation. All Rights Reserved.
+#*
+#* You may not reproduce, distribute, publish, display, perform, modify, adapt,
+#* transmit, broadcast, present, recite, release, license or otherwise exploit
+#* any part of this publication in any form, by any means, without the prior
+#* written permission of Insyde Software Corporation.
+#*
+#******************************************************************************
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = NtfsDxe
+  FILE_GUID                      = B6CD00A1-C45B-41f4-8058-BA6E5C0499B7
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 1.0
+
+  ENTRY_POINT                    = NtfsEntryPoint
+  UNLOAD_IMAGE                   = NtfsUnload
+
+[Sources.common]
+  Ntfs.c
+  ComponentName.c
+  UnicodeCollation.c
+  Misc.c
+  Data.c
+  Init.c
+  OpenVolume.c
+  Open.c
+  ReadWrite.c
+  Flush.c
+  Info.c
+  DirectoryManage.c
+  Delete.c
+  ntfsfix.c
+  FileName.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  ntfs-3g/ntfs-3g.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+  PcdLib
+  LibC
+  LibUefi
+  NtfsLib
+
+[Protocols]
+  gEfiDiskIoProtocolGuid                ## TO_START
+  gEfiDiskIo2ProtocolGuid               ## TO_START
+  gEfiBlockIoProtocolGuid               ## TO_START
+  gEfiSimpleFileSystemProtocolGuid      ## BY_START
+  gEfiUnicodeCollationProtocolGuid      ## TO_START
+  gEfiUnicodeCollation2ProtocolGuid     ## TO_START
+
+[Guids] 
+  gEfiFileSystemInfoGuid
+  gEfiFileSystemVolumeLabelInfoIdGuid
+
+[Pcd]
+  gEfiMdePkgTokenSpaceGuid.PcdUefiVariableDefaultLang           ## SOMETIMES_CONSUMES
+  gEfiMdePkgTokenSpaceGuid.PcdUefiVariableDefaultPlatformLang   ## SOMETIMES_CONSUMES
+
+[BuildOptions]
+  GCC:*_*_*_CC_FLAGS = -Wno-unused-function -Wno-unused-but-set-variable
+
+
