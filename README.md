@@ -4,13 +4,13 @@
     [LibraryClasses]
         #ShellCEntryLib
     
-# Description for folder
+# Description for folders
     The library folder is Ntfs-3g source code modified a little. 
     The NtfsDxe folder is simple file system abstracting the NTFS. 
     The Conf folder is sample for building configuration of edk2.
     The bin folder is bin file prebuilding
 
-# User Guild
+# User guild
         Run following command under uefi shell, the NTFS volume will be mounted and can be explored.
         >>load NftsDxe.efi
         >>map
