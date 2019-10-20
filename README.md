@@ -1,5 +1,8 @@
 # Compile
     The project should be compiled under edk2 with edk2-libc project. 
+    Comment the following line in LibC.inf of edk2-libc project
+    [LibraryClasses]
+        #ShellCEntryLib
     
 # Description for folder
     The library folder is Ntfs-3g source code modified a little. 
