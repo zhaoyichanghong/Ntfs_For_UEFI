@@ -1,6 +1,7 @@
 # Compile
     The project should be compiled under edk2 with edk2-libc project. 
-    Comment the following line in LibC.inf of edk2-libc project
+    Copy StdLib, StdLibPrivateInternalFiles and Ntfs_For_UEFI to root of edk2 project
+    Comment the following line in LibC.inf of StdLib
     [LibraryClasses]
         #ShellCEntryLib
     
